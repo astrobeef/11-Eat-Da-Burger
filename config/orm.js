@@ -40,7 +40,9 @@ const orm = {
      * @param {Function} cb - the call back function
      */
     updateOne : function(table, column, columnValue, condition, conditionValue, cb){
-        const queryStr = "UPDATE ?? SET ?? = ? WHERE ?? = ?"
+        const queryStr = "UPDATE ?? SET ?? = ? WHERE ?? = ?";
+
+        console.log(`UPDATE ${table} SET ${column} = ${columnValue} WHERE ${condition} = ${conditionValue}`);
 
         connection.query(queryStr, [table, column, columnValue, condition, conditionValue], cb);
     }

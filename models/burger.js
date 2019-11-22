@@ -31,7 +31,8 @@ const burger = {
      * @param {function} cb - The callback function
      */
     devourOneBurger : function(burger_ID, cb){
-        orm.updateOne(mTableName, "devoured", true, "id", burger_ID, function(rUpdatedBurger){
+        orm.updateOne(mTableName, "devoured", true, "id", parseInt(burger_ID), function(rUpdatedBurger){
+            console.log("Devouring burger with id : " + burger_ID);
             cb(rUpdatedBurger);
         });
     }
