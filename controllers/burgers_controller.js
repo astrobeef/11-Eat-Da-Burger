@@ -10,8 +10,6 @@ router.get("/", function (req, res) {
         const hbsObject = {
             burgers: data
         };
-        console.log(hbsObject);
-        console.log("^^^ hbsObject");
 
         res.render("index", hbsObject);
     });
@@ -19,7 +17,7 @@ router.get("/", function (req, res) {
 
 router.post("/api/burgers", function (req, res) {
     burger.insertOneBurger(req.body.colName, req.body.colVal, function (result) {
-        res.json({ id: result.insertId });
+        res.sendStatus(200);
     });
 });
 
@@ -27,7 +25,6 @@ router.put("/api/burgers/:id", function (req, res){
     burger.devourOneBurger(req.params.id, function(err, result){
         if(err) throw err;
         res.sendStatus(200);
-        console.log("Ran put");
     });
 });
 

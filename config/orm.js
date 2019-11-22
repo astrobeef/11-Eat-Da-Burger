@@ -12,9 +12,6 @@ const orm = {
         connection.query(queryStr, [table], function(err, rAllBurgers){
             if(err) throw err;
 
-            console.log(rAllBurgers);
-            console.log("^^^^^^Result from orm.js");
-
             cb(rAllBurgers);
         });
     },
@@ -27,6 +24,8 @@ const orm = {
      */
     insertOne : function(table, column, columnValue, cb){
         const queryStr = "INSERT INTO ?? (??) VALUES (?)";
+
+        console.log(`INSERT INTO ${table} (${column}) VALUES ("${columnValue}")`);
 
         connection.query(queryStr, [table, column, columnValue], cb);
     },

@@ -9,8 +9,6 @@ const burger = {
      */
     selectAllBurgers : function(cb){
         orm.selectAll(mTableName, function(rAllBurgers){
-            console.log(rAllBurgers);
-            console.log("^^^ All burgers from burger.js");
             cb(rAllBurgers);
         });
     },
@@ -22,6 +20,7 @@ const burger = {
      */
     insertOneBurger : function(col, colValue, cb){
         orm.insertOne(mTableName, col, colValue, function(rNewBurger){
+            console.log("Inserting burger");
             cb(rNewBurger);
         });
     },
