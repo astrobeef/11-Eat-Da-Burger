@@ -1,12 +1,18 @@
 const orm = require("../config/orm");
 
+const mTableName = "burgers";
+
 const burger = {
     /**
      * 
      * @param {function} cb - The callback function.
      */
     selectAllBurgers : function(cb){
-        orm.selectAll("burger", cb);
+        orm.selectAll(mTableName, function(rAllBurgers){
+            console.log(rAllBurgers);
+            console.log("^^^ All burgers from burger.js");
+            cb(rAllBurgers);
+        });
     },
     /**
      * 
@@ -15,7 +21,9 @@ const burger = {
      * @param {function} cb - The callback function
      */
     insertOneBurger : function(col, colValue, cb){
-        orm.insertOne("burger", col, colValue, cb);
+        orm.insertOne(mTableName, col, colValue, function(rNewBurger){
+            cb(rNewBurger);
+        });
     },
     /**
      * 
@@ -23,7 +31,9 @@ const burger = {
      * @param {function} cb - The callback function
      */
     devourOneBurger : function(burger_ID, cb){
-        orm.updateOne("burger", "devoured", true, "id", burger_ID, cb);
+        orm.updateOne(mTableName, "devoured", true, "id", burger_ID, function(rUpdatedBurger){
+            cb(rUpdatedBurger);
+        });
     }
 }
 

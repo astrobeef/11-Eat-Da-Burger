@@ -9,7 +9,14 @@ const orm = {
     selectAll : function(table, cb){
         const queryStr = "SELECT * FROM ??";
 
-        connection.query(queryStr, [table], cb);
+        connection.query(queryStr, [table], function(err, rAllBurgers){
+            if(err) throw err;
+
+            console.log(rAllBurgers);
+            console.log("^^^^^^Result from orm.js");
+
+            cb(rAllBurgers);
+        });
     },
     /**
      * Insert one row into a table.
