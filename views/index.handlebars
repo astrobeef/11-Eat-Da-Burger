@@ -1,36 +1,64 @@
-<ul>
-  {{#each burgers}}
+<div class="row justify-content-center py-5">
 
-  {{#if devoured}}
-  burger name : {{burger_name}}
-  <br>
+  <h1>Eat-da-Burger</h1>
 
-  {{/if}}
+</div>
 
-  {{/each}}
-</ul>
+<div class="row justify-content-center">
 
+  <div class="col-3 justify-content-center">
+    <h3>
+      Devoured
+    </h3>
 
-<ul>
-  {{#each burgers}}
+    <ul class="list-group">
+      {{#each burgers}}
 
-  {{#unless devoured}}
-  burger name : {{burger_name}}
-  <button class="devour-button" data-id="{{id}}">Devour it!</button>
-  <br>
-  {{/unless}}
+      {{#if devoured}}
+      <li class="list-group-item bg-danger">
+        <span class="menu-item">burger name : {{burger_name}}</span>
+        <br>
+      </li>
 
-  {{/each}}
-</ul>
+      {{/if}}
 
-
-<h2>Add a Burger</h2>
-<form class="create-form">
-
-  <div class="form-group">
-    <label for="name">Burger Name:</label>
-    <input type="text" id="name" name="burger_name">
+      {{/each}}
+    </ul>
   </div>
 
-  <button type="submit">Add Burger</button>
-</form>
+  <div class="col-3 justify-content-center">
+    <h3>
+      Menu
+    </h3>
+
+    <ul class="list-group">
+      {{#each burgers}}
+
+      {{#unless devoured}}
+      <li class="list-group-item bg-dark">
+        <button class="devour-button btn btn-warning" data-id="{{id}}">Devour it!</button>
+        <span class="text-light menu-item">burger name : {{burger_name}}</span>
+        <br>
+      </li>
+      <br>
+      {{/unless}}
+
+      {{/each}}
+    </ul>
+  </div>
+</div>
+
+<div class="row justify-content-center py-5">
+  <div class="justify-content-center m-0">
+    <h2>Add a Burger</h2>
+    <form class="create-form">
+
+      <div class="form-group">
+        <label for="name">Burger Name:</label>
+        <input type="text" id="name" name="burger_name">
+      </div>
+
+      <button type="submit">Add Burger</button>
+    </form>
+  </div>
+</div>
